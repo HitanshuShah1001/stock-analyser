@@ -7,13 +7,13 @@ import { z } from "zod";
 const getStockData = async ({ url }: { url: string }) => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
-  await page.goto(url); // Replace with your specific URL
-  // Wait for the element to appear (optional, but useful for dynamic content)
+  await page.goto(url);
+  
   await page.waitForSelector("div.YMlKec.fxKbKc");
 
-  // Extract the data from the element(s)
+  
   const data = await page.evaluate(() => {
-    // Select all divs with both classes
+    
     const elements = Array.from(document.querySelectorAll("div.YMlKec.fxKbKc"));
     return elements.map((el) => el.textContent?.trim());
   });
@@ -24,8 +24,8 @@ const getStockData = async ({ url }: { url: string }) => {
 const getIncomeStatementsAndFinancials = async ({ url }: { url: string }) => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
-  await page.goto(url); // Replace with your specific URL
-  // Wait for the element to appear (optional, but useful for dynamic content)
+  await page.goto(url); 
+ 
   await page.waitForSelector("table.slpEwd");
 
   // Extract the data from the element(s)
